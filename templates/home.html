@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Screener</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 text-center">
+                    <div class="welcome-text animate__animated animate__fadeInDown">
+                        <h1>AI Resume Screener</h1>
+                        <p class="lead">Get your resume analyzed by advanced AI technology</p>
+                        <div class="typing-text">Match your profile with job requirements instantly</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center g-4">
+                <div class="col-md-6 animate__animated animate__fadeInDown">
+                    <div class="auth-card glass-effect">
+                        <ul class="nav nav-pills mb-4 justify-content-center" id="authTabs">
+                            <li class="nav-item mx-2">
+                                <a class="nav-link active" data-form="login">
+                                    <i class="fas fa-sign-in-alt me-2"></i>Login
+                                </a>
+                            </li>
+                            <li class="nav-item mx-2">
+                                <a class="nav-link" data-form="signup">
+                                    <i class="fas fa-user-plus me-2"></i>Sign Up
+                                </a>
+                            </li>
+                        </ul>
+
+                        <div id="alertBox" class="alert" style="display: none;"></div>
+
+                        <!-- Login Form -->
+                        <form id="loginForm" class="auth-form active">
+                            <h3 class="text-center mb-4">Welcome Back!</h3>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control glass-input" id="loginUsername" placeholder="Username" required>
+                                <label for="loginUsername"><i class="fas fa-user me-2"></i>Username</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control glass-input" id="loginPassword" placeholder="Password" required>
+                                <label for="loginPassword"><i class="fas fa-lock me-2"></i>Password</label>
+                                <i class="fas fa-eye password-toggle position-absolute end-0 top-50 translate-middle-y me-3"></i>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-glow">
+                                    <i class="fas fa-sign-in-alt me-2"></i>Login
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- Signup Form -->
+                        <form id="signupForm" class="auth-form">
+                            <h3 class="text-center mb-4">Create Account</h3>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control glass-input" id="signupUsername" placeholder="Choose Username" required>
+                                <label for="signupUsername"><i class="fas fa-user me-2"></i>Choose Username</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control glass-input" id="signupPassword" placeholder="Choose Password" required>
+                                <label for="signupPassword"><i class="fas fa-lock me-2"></i>Choose Password</label>
+                                <i class="fas fa-eye password-toggle position-absolute end-0 top-50 translate-middle-y me-3"></i>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control glass-input" id="confirmPassword" placeholder="Confirm Password" required>
+                                <label for="confirmPassword"><i class="fas fa-lock me-2"></i>Confirm Password</label>
+                                <i class="fas fa-eye password-toggle position-absolute end-0 top-50 translate-middle-y me-3"></i>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-glow">
+                                    <i class="fas fa-user-plus me-2"></i>Sign Up
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center mt-5 pt-5">
+                <div class="col-md-8 animate__animated animate__fadeInUp">
+                    <div class="features-horizontal">
+                        <div class="feature-item glass-effect">
+                            <div class="feature-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h5>AI Analysis</h5>
+                                <p>Smart resume parsing</p>
+                            </div>
+                        </div>
+                        <div class="feature-item glass-effect">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h5>Match Score</h5>
+                                <p>Precise compatibility</p>
+                            </div>
+                        </div>
+                        <div class="feature-item glass-effect">
+                            <div class="feature-icon">
+                                <i class="fas fa-key"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h5>Keyword Detection</h5>
+                                <p>Smart skill matching</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center mt-5">
+                <div class="col-12">
+                    <footer class="footer text-center animate__animated animate__fadeIn">
+                        <div class="footer-content py-4 px-3">
+                            <div class="designer-credit mb-2">
+                                <p>Website designed by <span class="highlight">Atul Kande</span></p>
+                            </div>
+                            <div class="footer-links mb-2">
+                                <a href="https://github.com/atulak19" class="footer-link"><i class="fab fa-github"></i></a>
+                                <a href="https://www.linkedin.com/in/atul-kande-b51506220" class="footer-link"><i class="fab fa-linkedin"></i></a>
+                                <a href="mailto:atulakande19@gmail.com" class="footer-link"><i class="fas fa-envelope"></i></a>
+                            </div>
+                            <div class="copyright">
+                                <p>&copy; 2025 AI Resume Screener. All rights reserved.</p>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+
+        <!-- Animated Background -->
+        <div class="area">
+            <ul class="circles">
+                <li></li><li></li><li></li><li></li><li></li>
+                <li></li><li></li><li></li><li></li><li></li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html> 
